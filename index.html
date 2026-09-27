@@ -7,23 +7,23 @@
   <style>
     :root {
       --primary-pink: #ff75a0;
-      --primary-blue: #6c5ce7;
+      --primary-purple: #6c5ce7;
       --candy-yellow: #feca57;
       --candy-cyan: #48dbfb;
       --bg-light: #f7f9fc;
       --text-dark: #2f3542;
       --text-sub: #747d8c;
-      --discord-color: #5865F2;
-      --rainbow-bar: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #54a0ff, #5f27cd, #ff6b6b);
+      --discord-btn: linear-gradient(135deg, #5865F2, #7289da);
+      --rainbow-strip: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #54a0ff, #5f27cd, #ff6b6b);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background-color: var(--bg-light);
       background-image: 
-        radial-gradient(circle at 10% 15%, rgba(255, 117, 160, 0.18) 0%, transparent 40%),
-        radial-gradient(circle at 90% 85%, rgba(108, 92, 231, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(72, 219, 251, 0.12) 0%, transparent 60%);
+        radial-gradient(circle at 10% 15%, rgba(255, 117, 160, 0.16) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(108, 92, 231, 0.14) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(72, 219, 251, 0.1) 0%, transparent 60%);
       color: var(--text-dark);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", sans-serif;
       min-height: 100vh;
@@ -31,89 +31,81 @@
       overflow-x: hidden;
     }
 
-    /* 頂部彩虹動畫流光條 */
-    .rainbow-strip {
+    .rainbow-line {
       height: 6px;
       width: 100%;
-      background: var(--rainbow-bar);
+      background: var(--rainbow-strip);
       background-size: 300% 100%;
-      animation: rainbowFlow 4s linear infinite;
+      animation: rainbowGlow 4s linear infinite;
     }
-    @keyframes rainbowFlow {
+    @keyframes rainbowGlow {
       0% { background-position: 0% 50%; }
       100% { background-position: 300% 50%; }
     }
 
-    /* 頂部可愛浣貓吉祥物看板 */
     header {
       text-align: center;
       padding: 35px 20px 20px;
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(12px);
       border-bottom: 2px solid rgba(255, 117, 160, 0.2);
-      position: relative;
     }
-
-    /* 可愛流淚小浣貓吉祥物 (純 CSS + 互動彩蛋) */
-    .mascot-wrap {
+    .mascot-box {
       display: inline-block;
       cursor: pointer;
       position: relative;
-      animation: bounceMascot 3s ease-in-out infinite;
+      animation: bounce 3s ease-in-out infinite;
     }
-    @keyframes bounceMascot {
+    @keyframes bounce {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-8px); }
     }
     .mascot-avatar {
-      width: 96px;
-      height: 96px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
       background: linear-gradient(135deg, #a4b0be, #747d8c);
       margin: 0 auto;
-      border: 4px solid #ffffff;
-      box-shadow: 0 10px 25px rgba(255, 117, 160, 0.35);
+      border: 4px solid #fff;
+      box-shadow: 0 8px 20px rgba(255, 117, 160, 0.35);
       position: relative;
       overflow: hidden;
     }
-    /* 耳朵 */
     .ear {
       position: absolute;
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       background: #57606f;
       border-radius: 50% 50% 0 0;
-      top: -8px;
-      border: 3px solid #fff;
+      top: -6px;
+      border: 2px solid #fff;
     }
     .ear.left { left: 4px; transform: rotate(-25deg); }
     .ear.right { right: 4px; transform: rotate(25deg); }
-    /* 浣熊黑眼眶面罩 */
-    .eye-mask {
+    .mask-area {
       position: absolute;
-      width: 80px;
-      height: 32px;
+      width: 76px;
+      height: 30px;
       background: #2f3542;
-      border-radius: 20px;
-      top: 36px;
-      left: 8px;
+      border-radius: 16px;
+      top: 34px;
+      left: 7px;
     }
-    .mascot-eye {
-      width: 10px;
-      height: 14px;
+    .eye {
+      width: 9px;
+      height: 12px;
       background: #ffffff;
       border-radius: 50%;
       position: absolute;
       top: 9px;
-      animation: blinkEyes 4s infinite;
+      animation: blink 4s infinite;
     }
-    .mascot-eye.left { left: 16px; }
-    .mascot-eye.right { right: 16px; }
-    @keyframes blinkEyes {
+    .eye.left { left: 16px; }
+    .eye.right { right: 16px; }
+    @keyframes blink {
       0%, 96%, 100% { transform: scaleY(1); }
       98% { transform: scaleY(0.1); }
     }
-    /* 可愛淚滴（呼應工作室頭像特徵） */
     .tear {
       position: absolute;
       width: 6px;
@@ -121,29 +113,28 @@
       background: #48dbfb;
       border-radius: 0 50% 50% 50%;
       transform: rotate(45deg);
-      top: 25px;
-      animation: dripTear 2s infinite ease-in;
+      top: 24px;
+      animation: drip 2s infinite ease-in;
     }
     .tear.left { left: 18px; }
     .tear.right { right: 18px; }
-    @keyframes dripTear {
+    @keyframes drip {
       0% { opacity: 0; transform: translateY(-2px) rotate(45deg); }
       50% { opacity: 1; }
-      100% { opacity: 0; transform: translateY(12px) rotate(45deg); }
+      100% { opacity: 0; transform: translateY(10px) rotate(45deg); }
     }
     .snout {
       position: absolute;
-      width: 26px;
-      height: 18px;
-      background: #ffffff;
+      width: 24px;
+      height: 16px;
+      background: #fff;
       border-radius: 50%;
       bottom: 12px;
-      left: 35px;
-      z-index: 2;
+      left: 33px;
     }
     .nose {
       width: 8px;
-      height: 6px;
+      height: 5px;
       background: #2f3542;
       border-radius: 50%;
       margin: 3px auto 0;
@@ -152,133 +143,131 @@
     .brand-title {
       font-size: 26px;
       font-weight: 900;
-      margin-top: 12px;
+      margin-top: 10px;
       background: linear-gradient(135deg, #ff4757, #6c5ce7, #00d2d3);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      letter-spacing: 1px;
     }
-    .brand-sub {
+    .brand-desc {
       font-size: 13px;
       color: var(--text-sub);
-      margin-top: 5px;
+      margin-top: 4px;
       font-weight: 600;
     }
 
-    /* 分類標籤導覽 (趣味糖果按鈕) */
-    .tab-bar {
+    .nav-bar {
       display: flex;
       justify-content: center;
-      gap: 10px;
-      padding: 16px;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px 10px;
       position: sticky;
       top: 0;
-      background: rgba(247, 249, 252, 0.9);
-      backdrop-filter: blur(16px);
-      z-index: 10;
+      background: rgba(247, 249, 252, 0.92);
+      backdrop-filter: blur(14px);
+      z-index: 20;
     }
-    .tab-btn {
-      background: #ffffff;
-      border: 2px solid #e4e7eb;
+    .nav-btn {
+      background: #fff;
+      border: 1.5px solid #e2e8f0;
       color: var(--text-sub);
-      padding: 9px 20px;
-      border-radius: 25px;
-      font-size: 13px;
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 12.5px;
       font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      transition: all 0.2s;
     }
-    .tab-btn.active, .tab-btn:hover {
+    .nav-btn.active, .nav-btn:hover {
       background: linear-gradient(135deg, #ff75a0, #ff8993);
-      color: #ffffff;
+      color: #fff;
       border-color: transparent;
-      box-shadow: 0 6px 18px rgba(255, 117, 160, 0.4);
-      transform: translateY(-3px);
+      box-shadow: 0 4px 14px rgba(255, 117, 160, 0.35);
+      transform: translateY(-2px);
     }
 
-    /* 主要容器 */
     .container {
-      max-width: 1050px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 16px 20px;
     }
-    .section-title {
-      font-size: 20px;
+    .section-head {
+      font-size: 19px;
       font-weight: 900;
-      margin: 30px 0 16px;
+      margin: 28px 0 14px;
       display: flex;
       align-items: center;
       gap: 10px;
     }
-    .section-title span {
+    .section-head span {
       background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-      color: #ffffff;
-      font-size: 12px;
-      padding: 3px 12px;
-      border-radius: 12px;
+      color: #fff;
+      font-size: 11.5px;
+      padding: 2px 10px;
+      border-radius: 10px;
       font-weight: 700;
     }
 
-    /* 卡片網格與動漫明亮風商品卡 */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 16px;
     }
     .card {
-      background: rgba(255, 255, 255, 0.92);
-      border: 2px solid #ffffff;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 10px 24px rgba(180, 195, 215, 0.2);
+      background: rgba(255, 255, 255, 0.95);
+      border: 1.5px solid #fff;
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(180, 195, 215, 0.18);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      position: relative;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.25s;
     }
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 36px rgba(255, 117, 160, 0.25);
+      transform: translateY(-5px);
+      box-shadow: 0 14px 28px rgba(255, 117, 160, 0.22);
       border-color: rgba(255, 117, 160, 0.4);
     }
-    .card-badge {
+    .tag {
       display: inline-block;
       font-size: 11px;
       font-weight: 800;
-      padding: 4px 10px;
-      border-radius: 12px;
-      background: #ffeef2;
-      color: #ff4757;
-      margin-bottom: 10px;
+      padding: 3px 8px;
+      border-radius: 8px;
+      margin-bottom: 8px;
       width: fit-content;
     }
-    .card-badge.account { background: #eef2ff; color: #5352ed; }
-    .card-badge.service { background: #eafaf1; color: #2ed573; }
+    .tag.script { background: #ffeef2; color: #ff4757; }
+    .tag.account { background: #eef2ff; color: #5352ed; }
+    .tag.fruit { background: #fff5e6; color: #ff9f43; }
+    .tag.robux { background: #e6fcf5; color: #0ca678; }
+    .tag.service { background: #f3f0ff; color: #7950f2; }
+
     .card h3 {
-      font-size: 16px;
+      font-size: 15.5px;
       font-weight: 800;
-      margin-bottom: 8px;
       color: #2f3542;
+      margin-bottom: 6px;
       line-height: 1.4;
     }
     .card p {
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--text-sub);
       line-height: 1.5;
-      margin-bottom: 16px;
-      min-height: 40px;
+      margin-bottom: 14px;
+      min-height: 38px;
     }
-    .card-bottom {
+    .card-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 14px;
+      padding-top: 12px;
       border-top: 1px dashed rgba(0, 0, 0, 0.08);
     }
-    .price-box {
-      font-size: 20px;
+    .price-text {
+      font-size: 18px;
       font-weight: 900;
       color: #ff4757;
     }
@@ -286,143 +275,153 @@
       background: linear-gradient(135deg, #6c5ce7, #5865F2);
       color: #fff;
       border: none;
-      padding: 9px 18px;
-      border-radius: 14px;
-      font-size: 13px;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-size: 12.5px;
       font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
       transition: all 0.2s;
     }
     .add-btn:hover {
-      transform: scale(1.06);
-      box-shadow: 0 6px 16px rgba(88, 101, 242, 0.4);
+      transform: scale(1.05);
+      box-shadow: 0 4px 14px rgba(88, 101, 242, 0.35);
     }
 
-    /* 懸浮購物車浮動按鈕 */
-    .cart-float {
+    .cart-float-btn {
       position: fixed;
-      right: 24px;
+      right: 20px;
       bottom: 24px;
       background: linear-gradient(135deg, #ff75a0, #ff8993);
-      color: #ffffff;
-      padding: 14px 24px;
-      border-radius: 40px;
+      color: #fff;
+      padding: 13px 22px;
+      border-radius: 35px;
       font-weight: 900;
-      font-size: 15px;
-      box-shadow: 0 10px 25px rgba(255, 117, 160, 0.45);
+      font-size: 14.5px;
+      box-shadow: 0 8px 22px rgba(255, 117, 160, 0.45);
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       z-index: 100;
-      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 0.2s;
     }
-    .cart-float:hover {
-      transform: scale(1.08);
-    }
-    .cart-num {
-      background: #ffffff;
+    .cart-float-btn:hover { transform: scale(1.06); }
+    .cart-pill {
+      background: #fff;
       color: #ff4757;
-      padding: 3px 8px;
-      border-radius: 12px;
-      font-size: 12px;
+      padding: 2px 7px;
+      border-radius: 10px;
+      font-size: 11px;
       font-weight: 900;
     }
 
-    /* 購物車抽屜 (亮色玻璃質感) */
-    .cart-drawer {
+    .drawer {
       position: fixed;
       top: 0;
       right: -100%;
       width: 100%;
-      max-width: 420px;
+      max-width: 440px;
       height: 100vh;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(16px);
       box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
       z-index: 200;
       display: flex;
       flex-direction: column;
-      transition: right 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      transition: right 0.35s ease;
     }
-    .cart-drawer.active { right: 0; }
-    .cart-header {
-      padding: 22px;
+    .drawer.active { right: 0; }
+    .drawer-head {
+      padding: 18px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 2px solid #f1f2f6;
     }
-    .cart-header h3 { font-size: 18px; font-weight: 900; color: #2f3542; }
-    .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #a4b0be; }
-    .cart-body {
+    .close-btn { background: none; border: none; font-size: 22px; cursor: pointer; color: #a4b0be; }
+    .drawer-body {
       flex: 1;
-      padding: 20px;
+      padding: 16px 20px;
       overflow-y: auto;
     }
-    .cart-item-row {
+    .order-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: #f8faff;
-      border: 1.5px solid #edf2f7;
-      padding: 14px;
-      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      padding: 12px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+    .del-btn { color: #ff6b81; border: none; background: none; cursor: pointer; font-size: 16px; margin-left: 6px; }
+
+    .form-group {
       margin-bottom: 12px;
     }
-    .item-title { font-size: 13px; font-weight: 800; color: #2f3542; max-width: 220px; }
-    .item-price { font-size: 14px; font-weight: 900; color: #ff4757; }
-    .item-del { color: #ff6b81; border: none; background: none; cursor: pointer; font-size: 16px; margin-left: 8px; }
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 5px;
+      color: #2f3542;
+    }
+    .form-control {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 12.5px;
+      background: #fff;
+      outline: none;
+    }
+    .form-control:focus {
+      border-color: #6c5ce7;
+    }
+    .notice-box {
+      font-size: 11.5px;
+      background: #fff8e6;
+      border: 1px solid #ffeaa7;
+      padding: 9px 12px;
+      border-radius: 10px;
+      color: #d63031;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
 
-    .cart-footer {
-      padding: 22px;
+    .drawer-foot {
+      padding: 18px 20px;
       border-top: 2px solid #f1f2f6;
-      background: #ffffff;
+      background: #fff;
     }
-    .warranty-card {
-      background: #fff0f3;
-      border: 1.5px solid #ffd1dc;
-      padding: 10px 14px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #ff4757;
-      margin-bottom: 16px;
-      cursor: pointer;
-    }
-    .total-box {
+    .total-line {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 16px;
-      font-weight: 900;
-      color: #2f3542;
-      margin-bottom: 16px;
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 14px;
     }
-    .total-box span:last-child {
-      font-size: 22px;
+    .total-line span:last-child {
+      font-size: 21px;
       color: #ff4757;
     }
     .checkout-btn {
       width: 100%;
-      background: linear-gradient(135deg, #5865F2, #6c5ce7);
-      color: #ffffff;
+      background: var(--discord-btn);
+      color: #fff;
       border: none;
-      padding: 16px;
-      border-radius: 16px;
-      font-size: 15px;
+      padding: 15px;
+      border-radius: 14px;
+      font-size: 14.5px;
       font-weight: 900;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(88, 101, 242, 0.35);
+      box-shadow: 0 6px 18px rgba(88, 101, 242, 0.35);
       transition: all 0.2s;
     }
     .checkout-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(88, 101, 242, 0.45);
+      box-shadow: 0 8px 22px rgba(88, 101, 242, 0.45);
     }
     .mask {
       position: fixed;
@@ -437,101 +436,201 @@
 </head>
 <body>
 
-  <!-- 彩虹炫彩動態頂條 -->
-  <div class="rainbow-strip"></div>
+  <div class="rainbow-line"></div>
 
-  <!-- 頂部 Header & 可愛浣貓吉祥物 -->
   <header>
-    <div class="mascot-wrap" onclick="mascotCheer()">
+    <div class="mascot-box" onclick="alert('🐾 浣貓老闆：「感謝光臨！選好商品就可以一鍵到 Discord 結單唷～」')">
       <div class="ear left"></div>
       <div class="ear right"></div>
       <div class="mascot-avatar">
-        <div class="eye-mask">
-          <div class="mascot-eye left"></div>
-          <div class="mascot-eye right"></div>
+        <div class="mask-area">
+          <div class="eye left"></div>
+          <div class="eye right"></div>
           <div class="tear left"></div>
           <div class="tear right"></div>
         </div>
-        <div class="snout">
-          <div class="nose"></div>
-        </div>
+        <div class="snout"><div class="nose"></div></div>
       </div>
     </div>
     <h1 class="brand-title">Roblox 浣貓工作室 🐾</h1>
-    <p class="brand-sub">✨ 頂尖通用腳本 ｜ Blox Fruits 滿等全V4帳號 ｜ 專業客製代找 ✨</p>
+    <p class="brand-desc">✨ 通用腳本 ｜ Blox Fruits 帳號與永久果 ｜ R幣儲值與代買 ✨</p>
   </header>
 
-  <!-- 糖果分類標籤列 -->
-  <div class="tab-bar">
-    <button class="tab-btn active" onclick="switchCategory('all', this)">全部商品 ✨</button>
-    <button class="tab-btn" onclick="switchCategory('script', this)">通用腳本 ⚡</button>
-    <button class="tab-btn" onclick="switchCategory('account', this)">Blox Fruits 帳號 ⚔️</button>
-    <button class="tab-btn" onclick="switchCategory('service', this)">客製代找 🔍</button>
+  <div class="nav-bar">
+    <button class="nav-btn active" onclick="switchNav('all', this)">全部商品 ✨</button>
+    <button class="nav-btn" onclick="switchNav('sec-script', this)">通用腳本 ⚡</button>
+    <button class="nav-btn" onclick="switchNav('sec-fruit', this)">永久果實/通行證 🍎</button>
+    <button class="nav-btn" onclick="switchNav('sec-robux', this)">Roblox 代充/R幣 💎</button>
+    <button class="nav-btn" onclick="switchNav('sec-account', this)">Blox Fruits 帳號 ⚔️</button>
+    <button class="nav-btn" onclick="switchNav('sec-service', this)">客製代買服務 🔍</button>
   </div>
 
   <div class="container">
-    <!-- 通用腳本區 -->
-    <div id="box-script">
-      <div class="section-title">通用腳本授權專區 <span>多款遊戲通用</span></div>
-      <div class="grid" id="list-script"></div>
+    <div class="sec-block" id="sec-script">
+      <div class="section-head">通用腳本授權專區 <span>多款遊戲通用</span></div>
+      <div class="grid" id="grid-script"></div>
     </div>
 
-    <!-- Blox Fruits 帳號專區 -->
-    <div id="box-account">
-      <div class="section-title">Blox Fruits 帳號現貨專區 <span>滿等 2800Lv / 全V4滿齒</span></div>
-      <div class="grid" id="list-account"></div>
+    <div class="sec-block" id="sec-fruit">
+      <div class="section-head">Blox Fruits 永久果實與通行證專區 <span>永久開通 / 快速到帳</span></div>
+      <div class="grid" id="grid-fruit"></div>
     </div>
 
-    <!-- 客製代找服務區 -->
-    <div id="box-service">
-      <div class="section-title">客製代找與解鎖服務 <span>任何遊戲皆可</span></div>
-      <div class="grid" id="list-service"></div>
+    <div class="sec-block" id="sec-robux">
+      <div class="section-head">Roblox 會員與 R 幣代充專區 <span>登錄代儲有保障 / 匯率隨市調</span></div>
+      <div class="grid" id="grid-robux"></div>
+    </div>
+
+    <div class="sec-block" id="sec-account">
+      <div class="section-head">Blox Fruits 帳號現貨專區 <span>滿等 2800Lv / 全V4滿齒</span></div>
+      <div class="grid" id="grid-account"></div>
+    </div>
+
+    <div class="sec-block" id="sec-service">
+      <div class="section-head">客製代找與代買服務 <span>任何遊戲均可代購</span></div>
+      <div class="grid" id="grid-service"></div>
     </div>
   </div>
 
-  <!-- 懸浮購物車 -->
-  <div class="cart-float" onclick="openCart()">
+  <div class="cart-float-btn" onclick="openCart()">
     🛒 我的清單
-    <span class="cart-num" id="badge-count">0</span>
+    <span class="cart-pill" id="cart-pill-count">0</span>
   </div>
 
-  <!-- 購物車遮罩與抽屜 -->
   <div class="mask" id="cart-mask" onclick="closeCart()"></div>
-  <div class="cart-drawer" id="cart-drawer">
-    <div class="cart-header">
-      <h3>🐾 浣貓採購清單</h3>
+  <div class="drawer" id="cart-drawer">
+    <div class="drawer-head">
+      <h3 style="font-size: 17px; font-weight: 900;">🐾 浣貓結帳清單</h3>
       <button class="close-btn" onclick="closeCart()">&times;</button>
     </div>
-    <div class="cart-body" id="cart-items">
-      <p style="text-align: center; color: #a4b0be; margin-top: 40px; font-size: 14px;">目前還沒有加入任何商品喔！</p>
-    </div>
-    <div class="cart-footer">
-      <label class="warranty-card">
-        <input type="checkbox" id="warranty-opt" onchange="renderCart()">
+
+    <div class="drawer-body">
+      <div id="cart-list-container">
+        <p style="text-align: center; color: #a4b0be; margin-top: 30px; font-size: 13.5px;">目前清單空空的唷～</p>
+      </div>
+
+      <hr style="margin: 16px 0; border: none; border-top: 1px dashed #e2e8f0;">
+
+      <div class="form-group">
+        <label>🕒 預約交易/付款時間：</label>
+        <input type="datetime-local" id="order-time" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>💳 選擇付款方式：</label>
+        <select id="payment-method" class="form-control" onchange="calcTotal()">
+          <option value="全家/7-11便利商店條碼 (+NT$15 手續費)">全家 / 7-11 超商條碼繳費 (+NT$15)</option>
+          <option value="全聯-全支付付款條碼 (+NT$15 手續費)">全聯 - 全支付付款條碼 (+NT$15)</option>
+          <option value="第一銀行 網路轉帳/無卡交易 (+NT$15 跨行/手續費)">第一銀行 網路轉帳 / 無卡交易 (+NT$15)</option>
+          <option value="超商代碼繳費 (視情況開放)">超商代碼繳費 (視情況開放)</option>
+        </select>
+      </div>
+
+      <div class="notice-box">
+        ⚠️ <b>安全與操作須知：</b><br>
+        1. 第一銀行轉帳/無卡：卡號請勿洩漏，避免牽涉法律責任！<br>
+        2. 全聯全支付：向店員告知「要加值指定金額」。<br>
+        3. 超商與全聯條碼均需加收 NT$15 手續費。
+      </div>
+
+      <label style="background: #fff0f3; border: 1px solid #ffd1dc; padding: 10px 12px; border-radius: 10px; display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700; color: #ff4757; cursor: pointer;">
+        <input type="checkbox" id="warranty-checkbox" onchange="calcTotal()">
         🛡️ 加購 7 天售後保障 (+NT$ 50)
       </label>
-      <div class="total-box">
-        <span>合計金額</span>
-        <span id="total-price">NT$ 0</span>
+    </div>
+
+    <div class="drawer-foot">
+      <div class="total-line">
+        <span>應付總額 (含手續費)</span>
+        <span id="final-price-text">NT$ 0</span>
       </div>
-      <button class="checkout-btn" onclick="copyAndCheckout()">
+      <button class="checkout-btn" onclick="exportOrder()">
         📋 複製訂單並前往 Discord 結單
       </button>
     </div>
   </div>
 
   <script>
-    // 完整商品資料庫（完整涵蓋你交代的所有商品）
-    const scriptItems = [
+    const scripts = [
       { id: 's1', name: 'Banana Cat Hub Premium 永久專屬密鑰', price: 600, desc: '官方授權永久專屬金鑰，自動穩定更新。' },
-      { id: 's2', name: 'Maru Hub Premium 永久鑰匙', price: 500, desc: '極簡科技藍白風格介面，高效率運行。' },
+      { id: 's2', name: 'Maru Hub Premium 永久鑰匙', price: 500, desc: '極簡科技藍白風格介面，高效率掛機運行。' },
       { id: 's3', name: 'HoHo Hub 永久鑰匙', price: 600, desc: '老牌熱門 Hub，功能完整多樣化。' },
       { id: 's4', name: 'SPEED Hub X Premium 永久鑰匙', price: 400, desc: '極速執行性能，專屬暗黑戰鬥面板。' },
       { id: 's5', name: 'RIVALS UE 永久鑰匙 (Unnamed Enhancements)', price: 1000, desc: '頂級效能強化，自瞄與對戰輔助。' },
       { id: 's6', name: 'RIVALS KiciaHook 永久鑰匙 (KiciaHook V3)', price: 1100, desc: 'Aimbot & ESP 頂尖功能，Undetected 終身防護更新。' }
     ];
 
-    const accountItems = [
+    const fruits = [
+      { id: 'f1', name: '永久火箭', price: 50, desc: 'Blox Fruits 永久火箭果實' },
+      { id: 'f2', name: '永久旋轉', price: 50, desc: 'Blox Fruits 永久旋轉果實' },
+      { id: 'f3', name: '永久春天', price: 50, desc: 'Blox Fruits 永久春天果實' },
+      { id: 'f4', name: '永久尖刺', price: 50, desc: 'Blox Fruits 永久尖刺果實' },
+      { id: 'f5', name: '永久炸彈', price: 50, desc: 'Blox Fruits 永久炸彈果實' },
+      { id: 'f6', name: '永久煙霧', price: 50, desc: 'Blox Fruits 永久煙霧果實' },
+      { id: 'f7', name: '永久火焰', price: 150, desc: 'Blox Fruits 永久火焰果實' },
+      { id: 'f8', name: '永久冰凍', price: 200, desc: 'Blox Fruits 永久冰凍果實' },
+      { id: 'f9', name: '永久沙子', price: 230, desc: 'Blox Fruits 永久沙子果實' },
+      { id: 'f10', name: '永久老鷹', price: 230, desc: 'Blox Fruits 永久老鷹果實' },
+      { id: 'f11', name: '永久暗暗果實', price: 240, desc: 'Blox Fruits 永久暗暗果實' },
+      { id: 'f12', name: '永久鑽石', price: 260, desc: 'Blox Fruits 永久鑽石果實' },
+      { id: 'f13', name: '永久閃閃', price: 290, desc: 'Blox Fruits 永久閃閃果實' },
+      { id: 'f14', name: '永久橡膠', price: 300, desc: 'Blox Fruits 永久橡膠果實' },
+      { id: 'f15', name: '永久靈魂 (特價款)', price: 320, desc: 'Blox Fruits 永久靈魂果實' },
+      { id: 'f16', name: '永久岩漿', price: 350, desc: 'Blox Fruits 永久岩漿果實' },
+      { id: 'f17', name: '永久地震', price: 390, desc: 'Blox Fruits 永久地震果實' },
+      { id: 'f18', name: '永久大佛', price: 400, desc: 'Blox Fruits 永久大佛果實' },
+      { id: 'f19', name: '永久愛情', price: 410, desc: 'Blox Fruits 永久愛情果實' },
+      { id: 'f20', name: '永久創造果實', price: 450, desc: 'Blox Fruits 永久創造果實' },
+      { id: 'f21', name: '永久蜘蛛', price: 490, desc: 'Blox Fruits 永久蜘蛛果實' },
+      { id: 'f22', name: '永久聲音果實', price: 500, desc: 'Blox Fruits 永久聲音果實' },
+      { id: 'f23', name: '永久鳳凰', price: 530, desc: 'Blox Fruits 永久鳳凰果實' },
+      { id: 'f24', name: '永久傳送門', price: 550, desc: 'Blox Fruits 永久傳送門果實' },
+      { id: 'f25', name: '永久響雷', price: 590, desc: 'Blox Fruits 永久響雷果實' },
+      { id: 'f26', name: '永久痛苦', price: 600, desc: 'Blox Fruits 永久痛苦果實' },
+      { id: 'f27', name: '永久暴風雪', price: 620, desc: 'Blox Fruits 永久暴風雪果實' },
+      { id: 'f28', name: '永久重力', price: 650, desc: 'Blox Fruits 永久重力果實' },
+      { id: 'f29', name: '永久暴龍', price: 650, desc: 'Blox Fruits 永久暴龍果實' },
+      { id: 'f30', name: '永久猛獁', price: 670, desc: 'Blox Fruits 永久猛獁果實' },
+      { id: 'f31', name: '永久麵糰果實', price: 690, desc: 'Blox Fruits 永久麵糰果實' },
+      { id: 'f32', name: '永久暗影', price: 700, desc: 'Blox Fruits 永久暗影果實' },
+      { id: 'f33', name: '永久毒液', price: 740, desc: 'Blox Fruits 永久毒液果實' },
+      { id: 'f34', name: '永久瓦斯', price: 750, desc: 'Blox Fruits 永久瓦斯果實' },
+      { id: 'f35', name: '永久靈魂 (旗艦款)', price: 750, desc: 'Blox Fruits 永久靈魂果實' },
+      { id: 'f36', name: '永久老虎', price: 750, desc: 'Blox Fruits 永久老虎果實' },
+      { id: 'f37', name: '永久雪怪', price: 750, desc: 'Blox Fruits 永久雪怪果實' },
+      { id: 'f38', name: '永久磁鐵', price: 750, desc: 'Blox Fruits 永久磁鐵果實' },
+      { id: 'f39', name: '永久控制', price: 900, desc: 'Blox Fruits 永久控制果實' },
+      { id: 'f40', name: '永久九尾狐', price: 900, desc: 'Blox Fruits 永久九尾狐果實' },
+      { id: 'f41', name: '永久龍果', price: 1000, desc: 'Blox Fruits 永久龍果實' },
+      { id: 'f42', name: '果實背包+1 (果倉)', price: 100, desc: '通行證：背包容量擴充 +1' },
+      { id: 'f43', name: '雙倍掉落率', price: 100, desc: '通行證：掉寶機率加倍' },
+      { id: 'f44', name: '快艇通行證', price: 100, desc: '通行證：疾速快艇座駕' },
+      { id: 'f45', name: '雙倍精通', price: 140, desc: '通行證：熟練度 2x 獲取' },
+      { id: 'f46', name: '雙倍金錢', price: 140, desc: '通行證：金幣 2x 獲取' },
+      { id: 'f47', name: '黑刀 (夜刀)', price: 320, desc: '通行證武器：黑刀' },
+      { id: 'f48', name: '果實尋找器', price: 750, desc: '通行證：果實方位雷達' }
+    ];
+
+    const robuxList = [
+      { id: 'r0_1', name: 'Roblox 代充會員', price: 115, desc: '含 +NT$15 手續費與 +NT$100 安全費（月費扣款保障）' },
+      { id: 'r0_2', name: '代送 1000R (會員給R)', price: 300, desc: '扣稅後實際到手 700R（亦收 30 RM 馬幣）' },
+      { id: 'r0_3', name: '代充 1000R (登錄代儲)', price: 400, desc: '足額直接入帳 1000R，登入代儲有保障' },
+      { id: 'r1', name: '500 R幣 代儲', price: 200, desc: '登入代儲有保障，價格隨匯率微調' },
+      { id: 'r2', name: '1000 R幣 代儲', price: 370, desc: '登入代儲有保障，價格隨匯率微調' },
+      { id: 'r3', name: '2000 R幣 代儲', price: 680, desc: '登入代儲有保障，價格隨匯率微調' },
+      { id: 'r4', name: '3000 R幣 代儲', price: 970, desc: '登入代儲有保障，價格隨匯率微調' },
+      { id: 'r5', name: '4000 R幣 代儲', price: 1300, desc: '登入代儲有保障，價格隨匯率微調' },
+      { id: 'r6', name: '5000 R幣 代儲', price: 1600, desc: '登入代儲有保障，價格隨匯率微調' },
+      { id: 'r7', name: '6000 R幣 代儲', price: 1900, desc: '登入代儲有保障，價格隨匯率微調' },
+      { id: 'r8', name: '7000 R幣 代儲', price: 2200, desc: '登入代儲有保障，價格隨匯率微調' },
+      { id: 'r9', name: '8000 R幣 代儲', price: 2500, desc: '登入代儲有保障，價格隨匯率微調' },
+      { id: 'r10', name: '9000 R幣 代儲', price: 2800, desc: '登入代儲有保障，價格隨匯率微調' },
+      { id: 'r11', name: '10000 R幣 代儲', price: 2900, desc: '登入代儲有保障，價格隨匯率微調' },
+      { id: 'r12', name: '22500 R幣 代儲', price: 5900, desc: '登入代儲有保障，價格隨匯率微調' },
+      { id: 'r13', name: '32500 R幣 代儲', price: 9000, desc: '登入代儲有保障，價格隨匯率微調' }
+    ];
+
+    const accounts = [
       { id: 'a1', name: '1 號：2800Lv + 神人', price: 100, desc: '滿等基礎帳號，起步快速成型。' },
       { id: 'a2', name: '2 號：2800Lv + 神人 + 血拳', price: 200, desc: '滿等具備血拳拳法。' },
       { id: 'a3', name: '3 號：2800Lv + 神人 + 天使V4 + 雙刀 + 吉他', price: 350, desc: '滿等天使V4高階神裝配置。' },
@@ -547,50 +646,46 @@
       { id: 'a13', name: '13 號：2800Lv + 血拳 + 雙刀 + 吉他', price: 250, desc: '帶血拳與主力神兵現貨。' }
     ];
 
-    const serviceItems = [
-      { id: 'sv1', name: '代找腳本服務（任何遊戲皆可）', price: 200, desc: '專業管道代尋各類特定遊戲腳本。' },
-      { id: 'sv2', name: '幫忙解鎖鑰匙加購服務', price: 50, desc: '免繁瑣驗證，代解各類腳本通行鑰匙。' }
+    const services = [
+      { id: 'sv1', name: '代找腳本服務 (任何遊戲皆可)', price: 200, desc: '專業代尋各類特定遊戲腳本。' },
+      { id: 'sv2', name: '代解鎖鑰匙加購服務', price: 50, desc: '免繁瑣驗證，代解各類腳本通行鑰匙。' },
+      { id: 'sv3', name: '其他商品/物品代買代購', price: 150, desc: '均價代買購價 +100~200 (會因匯率、運費或服務費調整)。' }
     ];
 
     let cart = [];
 
-    // 渲染商品到頁面
-    function fillCards(items, elId, badgeClass, badgeLabel) {
-      const el = document.getElementById(elId);
-      el.innerHTML = items.map(item => `
+    function renderList(data, containerId, tagClass, tagText) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = data.map(item => `
         <div class="card">
           <div>
-            <span class="card-badge ${badgeClass}">${badgeLabel}</span>
+            <span class="tag ${tagClass}">${tagText}</span>
             <h3>${item.name}</h3>
             <p>${item.desc}</p>
           </div>
-          <div class="card-bottom">
-            <span class="price-box">NT$ ${item.price}</span>
+          <div class="card-footer">
+            <span class="price-text">NT$ ${item.price}</span>
             <button class="add-btn" onclick="addToCart('${item.id}', '${item.name}', ${item.price})">+ 加入清單</button>
           </div>
         </div>
       `).join('');
     }
 
-    fillCards(scriptItems, 'list-script', '', '通用腳本');
-    fillCards(accountItems, 'list-account', 'account', 'Blox Fruits 帳號');
-    fillCards(serviceItems, 'list-service', 'service', '客製服務');
+    renderList(scripts, 'grid-script', 'script', '通用腳本');
+    renderList(fruits, 'grid-fruit', 'fruit', '永久果/通行證');
+    renderList(robuxList, 'grid-robux', 'robux', 'R幣/會員');
+    renderList(accounts, 'grid-account', 'account', 'Blox Fruits 帳號');
+    renderList(services, 'grid-service', 'service', '代購/服務');
 
-    // 趣味彩蛋：點擊浣貓會眨眼並打招呼
-    function mascotCheer() {
-      alert("🐾 浣貓老闆：「感謝光臨 Roblox 浣貓工作室！點擊商品就可以加入清單結帳唷～」");
-    }
-
-    // 購物車互動
     function addToCart(id, name, price) {
       cart.push({ id, name, price });
-      renderCart();
+      calcTotal();
       openCart();
     }
 
-    function removeItem(index) {
-      cart.splice(index, 1);
-      renderCart();
+    function removeCartItem(idx) {
+      cart.splice(idx, 1);
+      calcTotal();
     }
 
     function openCart() {
@@ -603,75 +698,93 @@
       document.getElementById('cart-mask').classList.remove('active');
     }
 
-    function renderCart() {
-      const container = document.getElementById('cart-items');
-      const badge = document.getElementById('badge-count');
-      const totalTxt = document.getElementById('total-price');
-      const hasWarranty = document.getElementById('warranty-opt').checked;
+    function calcTotal() {
+      const listEl = document.getElementById('cart-list-container');
+      const badge = document.getElementById('cart-pill-count');
+      const finalPriceEl = document.getElementById('final-price-text');
+      const hasWarranty = document.getElementById('warranty-checkbox').checked;
+      const paymentVal = document.getElementById('payment-method').value;
 
       badge.textContent = cart.length;
 
       if (cart.length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: #a4b0be; margin-top: 40px; font-size: 14px;">目前還沒有加入任何商品喔！</p>';
-        totalTxt.textContent = 'NT$ 0';
+        listEl.innerHTML = '<p style="text-align: center; color: #a4b0be; margin-top: 30px; font-size: 13.5px;">目前清單空空的唷～</p>';
+        finalPriceEl.textContent = 'NT$ 0';
         return;
       }
 
       let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-      let finalTotal = subtotal + (hasWarranty ? 50 : 0);
+      let warrantyFee = hasWarranty ? 50 : 0;
+      let paymentFee = paymentVal.includes('+NT$15') ? 15 : 0;
+      let total = subtotal + warrantyFee + paymentFee;
 
-      container.innerHTML = cart.map((item, idx) => `
-        <div class="cart-item-row">
+      listEl.innerHTML = cart.map((item, idx) => `
+        <div class="order-row">
           <div>
-            <div class="item-title">${item.name}</div>
-            <div class="item-price">NT$ ${item.price}</div>
+            <div style="font-size: 13px; font-weight: 800; color: #2f3542;">${item.name}</div>
+            <div style="font-size: 13px; font-weight: 900; color: #ff4757;">NT$ ${item.price}</div>
           </div>
-          <button class="item-del" onclick="removeItem(${idx})">✕</button>
+          <button class="del-btn" onclick="removeCartItem(${idx})">✕</button>
         </div>
       `).join('');
 
-      totalTxt.textContent = `NT$ ${finalTotal}`;
+      finalPriceEl.textContent = `NT$ ${total}`;
     }
 
-    // 複製訂單並導向 Discord
-    function copyAndCheckout() {
+    function exportOrder() {
       if (cart.length === 0) {
-        alert('購物清單裡面還沒有任何商品喔！');
+        alert('清單內還沒有任何商品喔！');
         return;
       }
 
-      const hasWarranty = document.getElementById('warranty-opt').checked;
-      let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-      let finalTotal = subtotal + (hasWarranty ? 50 : 0);
+      const orderTime = document.getElementById('order-time').value || '未填寫 (即時連繫)';
+      const paymentMethod = document.getElementById('payment-method').value;
+      const hasWarranty = document.getElementById('warranty-checkbox').checked;
 
-      let orderText = `🐾 【Roblox 浣貓工作室】線上訂單 🐾\\n`;
-      orderText += `---------------------------------------\\n`;
-      cart.forEach((item, index) => {
-        orderText += `${index + 1}. ${item.name} ➔ NT$ ${item.price}\\n`;
+      let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+      let warrantyFee = hasWarranty ? 50 : 0;
+      let paymentFee = paymentMethod.includes('+NT$15') ? 15 : 0;
+      let finalTotal = subtotal + warrantyFee + paymentFee;
+
+      let text = `🐾 【Roblox 浣貓工作室】線上結單 🐾\\n`;
+      text += `---------------------------------------\\n`;
+      text += `🕒 預約時間：${orderTime}\\n`;
+      text += `💳 付款方式：${paymentMethod}\\n`;
+      text += `---------------------------------------\\n`;
+      text += `📦 購買明細：\\n`;
+      cart.forEach((item, i) => {
+        text += `${i + 1}. ${item.name} ➔ NT$ ${item.price}\\n`;
       });
       if (hasWarranty) {
-        orderText += `★ 加購售後：7 天售後保障 (+NT$ 50)\\n`;
+        text += `★ 加購保障：7 天售後保障 (+NT$ 50)\\n`;
       }
-      orderText += `---------------------------------------\\n`;
-      orderText += `💰 總結算金額：NT$ ${finalTotal}\\n`;
-      orderText += `老闆您好！我已在官網挑選好以上商品，想進行購買結單～`;
+      if (paymentFee > 0) {
+        text += `★ 額外費用：超商/銀行手續費 (+NT$ 15)\\n`;
+      }
+      text += `---------------------------------------\\n`;
+      text += `💰 總結算金額：NT$ ${finalTotal}\\n`;
+      text += `⚠️ 第一銀行轉帳/無卡交易：請嚴格保密卡號，避免衍生法律責任。\\n`;
+      text += `老闆您好！我已在官網選好商品，要進行結帳～`;
 
-      navigator.clipboard.writeText(orderText).then(() => {
-        alert('🎉 訂單內容已複製到剪貼簿！即將帶您前往 Discord 伺服器發送結單訊息～');
+      navigator.clipboard.writeText(text).then(() => {
+        alert('🎉 訂單已完整複製到剪貼簿！即將為您打開 Discord 伺服器進行結單。');
         window.open('https://discord.gg/wdrpVxyjTe', '_blank');
       }).catch(() => {
         window.open('https://discord.gg/wdrpVxyjTe', '_blank');
       });
     }
 
-    // 分類導覽切換
-    function switchCategory(cat, btn) {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    function switchNav(targetId, btn) {
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      document.getElementById('box-script').style.display = (cat === 'all' || cat === 'script') ? 'block' : 'none';
-      document.getElementById('box-account').style.display = (cat === 'all' || cat === 'account') ? 'block' : 'none';
-      document.getElementById('box-service').style.display = (cat === 'all' || cat === 'service') ? 'block' : 'none';
+      const blocks = document.querySelectorAll('.sec-block');
+      if (targetId === 'all') {
+        blocks.forEach(b => b.style.display = 'block');
+      } else {
+        blocks.forEach(b => b.style.display = 'none');
+        document.getElementById(targetId).style.display = 'block';
+      }
     }
   </script>
 </body>
