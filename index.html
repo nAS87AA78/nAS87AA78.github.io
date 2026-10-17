@@ -2,59 +2,39 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>我的私人雲端手機控制台</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>私人雲端驗證</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background-color: #0f172a;
-      color: #f8fafc;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      padding: 20px;
-      text-align: center;
-    }
-    .card {
-      background: #1e293b;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      width: 100%;
-      max-width: 400px;
-    }
-    h1 { font-size: 22px; margin-bottom: 12px; color: #38bdf8; }
-    p { font-size: 14px; color: #94a3b8; margin-bottom: 24px; line-height: 1.5; }
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      background-color: #0284c7;
-      color: white;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: bold;
-      border-radius: 8px;
-      transition: background 0.2s;
-      box-shadow: 0 4px 12px rgba(2,132,199,0.3);
-    }
-    .btn:hover { background-color: #0369a1; }
-    .footer { margin-top: 20px; font-size: 12px; color: #64748b; }
+    body { background-color: #0f172a; color: #fff; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    .box { background: #1e293b; padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+    input { padding: 10px; font-size: 16px; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: #fff; margin-bottom: 10px; width: 80%; }
+    button { padding: 10px 20px; background: #0284c7; color: #fff; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; }
   </style>
 </head>
 <body>
-
-  <div class="card">
-    <h1>📱 我的私人雲端手機</h1>
-    <p>電腦背景正在全速運轉中。<br>點擊下方按鈕前往控制台，輸入你的專屬 9 位數代碼即可連接！</p>
-    
-    <a href="https://rustdesk.com/web" target="_blank" class="btn">🚀 進入雲端手機控制台</a>
-    
-    <div class="footer">安全性防護已啟動 • 獨立加密連線</div>
+  <div class="box" id="loginBox">
+    <h3>🔒 請輸入您的專屬安全密碼</h3>
+    <input type="password" id="pwd" placeholder="輸入密碼">
+    <br>
+    <button onclick="checkPassword()">進入系統</button>
   </div>
 
+  <div id="content" style="display:none; width:100%; height:100vh;">
+    <!-- 這裡放你未來要連線到雲手機的畫面或按鈕 -->
+    <iframe src="https://rustdesk.com/web" style="width:100%; height:100%; border:none;"></iframe>
+  </div>
+
+  <script>
+    function checkPassword() {
+      // 這裡的 '123456' 就是你自己的密碼，你可以隨時改成你想要的數字或文字！
+      var userPassword = document.getElementById('pwd').value;
+      if (userPassword === '123456') {
+        document.getElementById('loginBox').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+      } else {
+        alert('密碼錯誤！');
+      }
+    }
+  </script>
 </body>
 </html>
