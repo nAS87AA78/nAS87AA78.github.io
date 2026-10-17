@@ -3,15 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>我的私人雲端手機</title>
+  <title>我的私人雲端手機控制台</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; background-color: #0b0b0b; }
-    iframe { width: 100%; height: 100vh; border: none; display: block; }
+    body {
+      background-color: #0f172a;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+    .card {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      width: 100%;
+      max-width: 400px;
+    }
+    h1 { font-size: 22px; margin-bottom: 12px; color: #38bdf8; }
+    p { font-size: 14px; color: #94a3b8; margin-bottom: 24px; line-height: 1.5; }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background-color: #0284c7;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background 0.2s;
+      box-shadow: 0 4px 12px rgba(2,132,199,0.3);
+    }
+    .btn:hover { background-color: #0369a1; }
+    .footer { margin-top: 20px; font-size: 12px; color: #64748b; }
   </style>
 </head>
 <body>
-  <!-- 嵌入支援安全代碼登入的遠端控制介面 -->
-  <iframe src="https://web.rustdesk.com" allow="autoplay; fullscreen; clipboard-read; clipboard-write"></iframe>
+
+  <div class="card">
+    <h1>📱 我的私人雲端手機</h1>
+    <p>電腦背景正在全速運轉中。<br>點擊下方按鈕前往控制台，輸入你的專屬 9 位數代碼即可連接！</p>
+    
+    <a href="https://web.rustdesk.com" target="_blank" class="btn">🚀 進入雲端手機控制台</a>
+    
+    <div class="footer">安全性防護已啟動 • 獨立加密連線</div>
+  </div>
+
 </body>
 </html>
