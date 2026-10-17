@@ -6,9 +6,10 @@
   <title>私人雲端驗證</title>
   <style>
     body { background-color: #0f172a; color: #fff; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-    .box { background: #1e293b; padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-    input { padding: 10px; font-size: 16px; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: #fff; margin-bottom: 10px; width: 80%; }
-    button { padding: 10px 20px; background: #0284c7; color: #fff; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; }
+    .box { background: #1e293b; padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.5); width: 90%; max-width: 350px; }
+    input { padding: 12px; font-size: 16px; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: #fff; margin-bottom: 15px; width: 100%; box-sizing: border-box; }
+    button { padding: 12px 20px; background: #0284c7; color: #fff; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; width: 100%; font-weight: bold; }
+    button:hover { background: #0369a1; }
   </style>
 </head>
 <body>
@@ -20,14 +21,14 @@
   </div>
 
   <div id="content" style="display:none; width:100%; height:100vh;">
-    <!-- 這裡放你未來要連線到雲手機的畫面或按鈕 -->
+    <!-- 正確指向官方網頁控制台 -->
     <iframe src="https://rustdesk.com/web" style="width:100%; height:100%; border:none;"></iframe>
   </div>
 
   <script>
     function checkPassword() {
-      // 這裡的 '123456' 就是你自己的密碼，你可以隨時改成你想要的數字或文字！
       var userPassword = document.getElementById('pwd').value;
+      // 這裡的 '123456' 是密碼，你可以隨時在代碼裡改成你自己想要的密碼！
       if (userPassword === '123456') {
         document.getElementById('loginBox').style.display = 'none';
         document.getElementById('content').style.display = 'block';
